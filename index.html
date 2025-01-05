@@ -115,7 +115,7 @@
         <h2>きゃあ！引ったくりよ！</h2>
         <h3>引ったくりを捕まえろ！</h3>
         <button class="action-button" id="action-button" onclick="handleActionClick()">連打</button>
-        <p id="action-status">連打回数: 0/50</p>
+        <p id="action-status">連打回数: 0/100</p>
     </div>
 
     <!-- Game Over Screen -->
@@ -175,6 +175,15 @@
                     { text: "君に見惚れて集中出来なかったよ。", hp: -10 },
                     { text: "いやはや然し、画が動くとは奇怪な幻術にございましたな。", hp: 0 },
                     { text: "如何なる芸術に優る、正に美の至高といった具合でした。", hp: 5 },
+                ],
+            },
+            {
+                text: "ひったくりを捕まえるなんてかっこいいじゃない。",
+                choices: [
+                    { text: "当然のことをしたまでだよ。", hp: -5 },
+                    { text: "姫様、お怪我はございませんか。", hp: 5 },
+                    { text: "この程度、紅茶を淹れるのとさほど変わりない。", hp: 0 },
+                    { text: "この程度、楽勝さ。", hp: -10 },
                 ],
             },
         ];
@@ -239,9 +248,9 @@
             document.getElementById('background-image').classList.add('darken');
             document.getElementById('action-screen').style.display = 'block';
             actionClicks = 0;
-            document.getElementById('action-status').textContent = `連打回数: ${actionClicks}/50`;
+            document.getElementById('action-status').textContent = `連打回数: ${actionClicks}/100`;
             actionTimer = setTimeout(() => {
-                if (actionClicks < 50) {
+                if (actionClicks < 100) {
                     endGame(false);
                 }
             }, 10000);
@@ -249,8 +258,8 @@
 
         function handleActionClick() {
             actionClicks++;
-            document.getElementById('action-status').textContent = `連打回数: ${actionClicks}/50`;
-            if (actionClicks >= 50) {
+            document.getElementById('action-status').textContent = `連打回数: ${actionClicks}/100`;
+            if (actionClicks >= 100) {
                 clearTimeout(actionTimer);
                 proceedAfterAction();
             }

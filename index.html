@@ -18,7 +18,7 @@
             height: 100vh;
             position: relative;
         }
-        .title-screen, .monologue-screen, .question-screen, .game-over-screen, .win-screen, .intermission-screen, .action-screen {
+        .title-screen, .monologue-screen, .question-screen, .game-over-screen, .win-screen, .action-screen {
             text-align: center;
             z-index: 2;
         }
@@ -282,3 +282,18 @@
             } else {
                 document.getElementById('game-over-screen').style.display = 'block';
             }
+        }
+
+        function restartGame() {
+            currentQuestion = 0;
+            hp = 10;
+            document.getElementById('game-over-screen').style.display = 'none';
+            document.getElementById('win-screen').style.display = 'none';
+            document.getElementById('background-image').classList.remove('hidden');
+            document.getElementById('background-image').src = "images/1.jpg";
+            startMonologue();
+        }
+    </script>
+
+</body>
+</html>
